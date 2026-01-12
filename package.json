@@ -11,11 +11,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@tensorflow/tfjs": "^4.15.0",
-    "@mediapipe/hands": "^0.4.1675469404",
-    "@mediapipe/camera_utils": "^0.3.1675466867",
-    "@mediapipe/drawing_utils": "^0.3.1620248257"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
