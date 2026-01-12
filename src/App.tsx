@@ -31,6 +31,10 @@ function App() {
         map.set(gesture.label, gesture)
       })
       setGestureMap(map)
+    }).catch((error) => {
+      console.warn('Gesture recognizer initialization error:', error)
+      // Continue with empty map if initialization fails
+      setGestureMap(new Map())
     })
   }, [])
 
