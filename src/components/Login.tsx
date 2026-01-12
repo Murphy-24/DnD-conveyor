@@ -38,8 +38,8 @@ export const Login = () => {
       
       <div className="login-card">
         <div className="login-header">
-          <h1 className="login-title">Welcome Back</h1>
-          <p className="login-subtitle">Sign in to continue to D&D CONVEYOR</p>
+          <h1 className="login-title">LinguoSign</h1>
+          <p className="login-subtitle">Bridging Silence Through Signs</p>
         </div>
 
         <form className="login-form" onSubmit={handleSubmit}>
@@ -157,7 +157,7 @@ export const Login = () => {
           <p className="login-footer-text">
             Don't have an account?{' '}
             <a href="#" className="login-link" onClick={(e) => e.preventDefault()}>
-              Click here to create one
+              Create one
             </a>
           </p>
         </div>
