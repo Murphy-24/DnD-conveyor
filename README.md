@@ -9,6 +9,7 @@ A browser-based assistive web application enabling two-way communication between
 - **Text/Voice to ISL**: Converts text input or voice to visual sign language representations
 - **Browser-based**: Works entirely in the browser with standard hardware (camera and microphone)
 - **No Specialized Hardware**: Accessible on any device with a camera and microphone
+- **Modern Login Page**: Clean, accessible login UI with form validation
 
 ## Technology Stack
 
