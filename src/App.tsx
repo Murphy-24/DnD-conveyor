@@ -2,7 +2,7 @@
  * Main App Component - D&D CONVEYOR
  */
 
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { CommunicationMode, GesturePrediction, ISLGesture } from '@/types'
 import { ModeSelector } from './components/ModeSelector'
 import { CameraView } from './components/CameraView'
@@ -14,7 +14,7 @@ import './App.css'
 
 function App() {
   // Toggle to show login page (set to true to view login UI)
-  const [showLogin, setShowLogin] = useState(true)
+  const [showLogin] = useState(true)
   const [mode, setMode] = useState<CommunicationMode>('isl-to-text')
   const [currentGesture, setCurrentGesture] = useState<GesturePrediction | null>(null)
   const [translationText, setTranslationText] = useState<string>('')

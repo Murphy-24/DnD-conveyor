@@ -15,22 +15,22 @@ export class GestureRecognizer {
    */
   async initialize(): Promise<void> {
     try {
-      // Initialize MediaPipe Hands
-      const { Hands } = await import('@mediapipe/hands')
-      const { Camera } = await import('@mediapipe/camera_utils')
+      // Initialize MediaPipe Hands (commented out for now - add back when dependencies are available)
+      // const { Hands } = await import('@mediapipe/hands')
+      // const { Camera } = await import('@mediapipe/camera_utils')
 
-      this.hands = new Hands({
-        locateFile: (file: string) => {
-          return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
-        }
-      })
+      // this.hands = new Hands({
+      //   locateFile: (file: string) => {
+      //     return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+      //   }
+      // })
 
-      this.hands.setOptions({
-        maxNumHands: 2,
-        modelComplexity: 1,
-        minDetectionConfidence: 0.5,
-        minTrackingConfidence: 0.5
-      })
+      // this.hands.setOptions({
+      //   maxNumHands: 2,
+      //   modelComplexity: 1,
+      //   minDetectionConfidence: 0.5,
+      //   minTrackingConfidence: 0.5
+      // })
 
       // Load gesture dictionary (ISL alphabet and common gestures)
       this.loadGestureDictionary()
