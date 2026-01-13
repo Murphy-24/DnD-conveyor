@@ -35,4 +35,19 @@ code {
   min-height: 100vh;
   width: 100%;
   position: relative;
+  display: block;
+}
+
+/* Ensure body and html take full height */
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
 }

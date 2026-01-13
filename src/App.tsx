@@ -2,7 +2,7 @@
  * Main App Component - D&D CONVEYOR
  */
 
-import { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, ErrorInfo } from 'react'
 import { CommunicationMode, GesturePrediction, ISLGesture } from '@/types'
 import { ModeSelector } from './components/ModeSelector'
 import { CameraView } from './components/CameraView'
@@ -12,8 +12,10 @@ import { GestureRecognizer } from './core/gesture/GestureRecognizer'
 import { Login } from './components/Login'
 import './App.css'
 
+// Simple error handler - always show login
+
 function App() {
-  // Toggle to show login page (set to true to view login UI)
+  // Always show login page - no toggle needed
   const [showLogin] = useState(true)
   const [mode, setMode] = useState<CommunicationMode>('isl-to-text')
   const [currentGesture, setCurrentGesture] = useState<GesturePrediction | null>(null)
@@ -62,9 +64,29 @@ function App() {
     setTranslationText(text)
   }, [])
 
-  // Show login page if toggle is enabled
-  if (showLogin) {
-    return <Login />
+  // Always show login page
+  try {
+    if (showLogin) {
+      return <Login />
+    }
+  } catch (error) {
+    console.error('Error rendering Login:', error)
+    // Fallback to simple login if error
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        background: '#0a0a1a',
+        color: '#fff'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <h1>LinguoSign</h1>
+          <p>Bridging Silence Through Signs</p>
+        </div>
+      </div>
+    )
   }
 
   return (
