@@ -22,21 +22,36 @@ function App() {
   const [cameraError, setCameraError] = useState<string | null>(null)
 
   // Initialize gesture recognizer and build gesture map
+  // Only initialize if not showing login page
   useEffect(() => {
-    const recognizer = new GestureRecognizer()
-    recognizer.initialize().then(() => {
-      const gestures = recognizer.getAllGestures()
-      const map = new Map<string, ISLGesture>()
-      gestures.forEach(gesture => {
-        map.set(gesture.label, gesture)
+    if (showLogin) {
+      // Skip initialization when showing login page
+      return
+    }
+    
+    try {
+      const recognizer = new GestureRecognizer()
+      recognizer.initialize().then(() => {
+        try {
+          const gestures = recognizer.getAllGestures()
+          const map = new Map<string, ISLGesture>()
+          gestures.forEach(gesture => {
+            map.set(gesture.label, gesture)
+          })
+          setGestureMap(map)
+        } catch (error) {
+          console.warn('Error building gesture map:', error)
+          setGestureMap(new Map())
+        }
+      }).catch((error) => {
+        console.warn('Gesture recognizer initialization error:', error)
+        setGestureMap(new Map())
       })
-      setGestureMap(map)
-    }).catch((error) => {
-      console.warn('Gesture recognizer initialization error:', error)
-      // Continue with empty map if initialization fails
+    } catch (error) {
+      console.warn('Error creating gesture recognizer:', error)
       setGestureMap(new Map())
-    })
-  }, [])
+    }
+  }, [showLogin])
 
   const handleGestureDetected = useCallback((prediction: GesturePrediction) => {
     setCurrentGesture(prediction)
